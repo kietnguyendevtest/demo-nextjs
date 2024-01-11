@@ -1,0 +1,7 @@
+.header {
+    min-height: var(--header-height);
+
+    nav {
+        min-height: inherit;
+    }
+}

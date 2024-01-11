@@ -1,0 +1,21 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --header-height: 56px;
+    --footer-height: 24px;
+}
+
+html {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f6f7f8;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
