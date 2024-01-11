@@ -7,7 +7,7 @@ function PostDetail({ params }: { params: { id: string } }) {
     const fetcher: Fetcher<IPosts, string> = (url: string) =>
         fetch(url).then((res) => res.json());
     const { data, error, isLoading } = useSWR(
-        `http://localhost:8000/api/posts/${params.id}`,
+        `https://nmkiet-api-fake-json-server.vercel.app/api/posts/${params.id}`,
         fetcher,
         {
             revalidateIfStale: false,

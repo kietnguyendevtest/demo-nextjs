@@ -47,26 +47,31 @@ function AppModal(props: AppModalProps) {
         }
 
         if (postItem && postItem.id) {
-            fetch(`http://localhost:8000/api/posts/${postItem.id}`, {
-                method: "PUT",
-                headers: {
-                    Accept: "application/json, text/plain, */*",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ title, author, content }),
-            })
+            fetch(
+                `https://nmkiet-api-fake-json-server.vercel.app/api/posts/${postItem.id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        Accept: "application/json, text/plain, */*",
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ title, author, content }),
+                }
+            )
                 .then((res) => res.json())
                 .then((res) => {
                     if (res) {
                         toast.success("Edit succeed");
                         handleCloseModal();
-                        mutate("http://localhost:8000/api/posts");
+                        mutate(
+                            "https://nmkiet-api-fake-json-server.vercel.app/api/posts"
+                        );
                     } else {
                         toast.error("Edit Failed");
                     }
                 });
         } else {
-            fetch("http://localhost:8000/api/posts", {
+            fetch("https://nmkiet-api-fake-json-server.vercel.app/api/posts", {
                 method: "POST",
                 headers: {
                     Accept: "application/json, text/plain, */*",
@@ -79,7 +84,9 @@ function AppModal(props: AppModalProps) {
                     if (res) {
                         toast.success("Create succeed");
                         handleCloseModal();
-                        mutate("http://localhost:8000/api/posts");
+                        mutate(
+                            "https://nmkiet-api-fake-json-server.vercel.app/api/posts"
+                        );
                     } else {
                         toast.error("Create Failed");
                     }

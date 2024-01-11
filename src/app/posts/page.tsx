@@ -12,7 +12,7 @@ import Link from "next/link";
 function PostList() {
     const fetcher = (url: string) => fetch(url).then((res) => res.json());
     const { data, error, isLoading } = useSWR(
-        "http://localhost:8000/api/posts",
+        "https://nmkiet-api-fake-json-server.vercel.app/api/posts",
         fetcher,
         {
             revalidateIfStale: false,
