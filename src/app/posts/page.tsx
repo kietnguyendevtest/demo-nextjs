@@ -5,11 +5,11 @@ import useSWR from "swr";
 import AppTable from "@/components/app.table";
 import Link from "next/link";
 
-interface IProps {
-    posts: IPosts[];
-}
+// interface PostListProps {
+//     posts: IPosts[] = [];
+// }
 
-function PostList(props: IProps) {
+function PostList() {
     const fetcher = (url: string) => fetch(url).then((res) => res.json());
     const { data, error, isLoading } = useSWR(
         "http://localhost:8000/api/posts",

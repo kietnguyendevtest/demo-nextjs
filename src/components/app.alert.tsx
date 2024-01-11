@@ -4,13 +4,13 @@ import { Alert, Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { mutate } from "swr";
 
-interface IProps {
+interface AppAlertProps {
     showAlert: boolean;
     setShowAlert: (v: boolean) => void;
     postId: number | null;
 }
 
-function AppAlert(props: IProps) {
+function AppAlert(props: AppAlertProps) {
     const { showAlert, setShowAlert, postId } = props;
 
     const handleClose = () => {

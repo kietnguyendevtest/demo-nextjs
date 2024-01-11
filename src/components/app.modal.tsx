@@ -3,14 +3,14 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { mutate } from "swr";
 
-interface IProps {
+interface AppModalProps {
     showModal: boolean;
     setShowModal: (v: boolean) => void;
     postItem: IPosts | null;
     setPostItem: (v: IPosts | null) => void;
 }
 
-function AppModal(props: IProps) {
+function AppModal(props: AppModalProps) {
     const { showModal, setShowModal, postItem, setPostItem } = props;
     const [title, setTitle] = useState<string>("");
     const [author, setAuthor] = useState<string>("");

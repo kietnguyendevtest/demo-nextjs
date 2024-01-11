@@ -4,15 +4,16 @@ import Link from "next/link";
 import AppModal from "./app.modal";
 import AppAlert from "./app.alert";
 
-interface IProps {
+interface AppTableProps {
     posts: IPosts[];
 }
 
-function AppTable(props: IProps) {
+function AppTable(props: AppTableProps) {
     const { posts } = props;
     const [showModal, setShowModal] = useState<boolean>(false);
     const [showAlert, setShowAlert] = useState<boolean>(false);
     const [postItem, setPostItem] = useState<IPosts | null>(null);
+    const [postId, setPostId] = useState<number>(0);
 
     const handleAddnew = () => {
         setShowModal(true);
@@ -24,7 +25,8 @@ function AppTable(props: IProps) {
         setPostItem(item);
     };
 
-    const handeleDelete = (item: IPosts) => {
+    const handeleDelete = (id: number) => {
+        setPostId(id);
         setShowAlert(true);
     };
 
@@ -40,7 +42,7 @@ function AppTable(props: IProps) {
             <AppAlert
                 showAlert={showAlert}
                 setShowAlert={setShowAlert}
-                postId={postItem && postItem.id}
+                postId={postId}
             />
 
             <Table striped bordered hover>
@@ -92,7 +94,7 @@ function AppTable(props: IProps) {
                                         variant="secondary"
                                         size="sm"
                                         className="mx-2"
-                                        onClick={() => handeleDelete(item)}
+                                        onClick={() => handeleDelete(item.id)}
                                     >
                                         Delete
                                     </Button>
