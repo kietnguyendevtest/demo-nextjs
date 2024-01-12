@@ -10,9 +10,14 @@ import Link from "next/link";
 // }
 
 function PostList() {
-    const fetcher = (url: string) => fetch(url).then((res) => res.json());
+    //console.log(process.env.URL_API);
+    const fetcher = (url: string) =>
+        fetch(url, {
+            method: "GET",
+        }).then((res) => res.json());
+
     const { data, error, isLoading } = useSWR(
-        "https://nmkiet-api-fake-json-server.vercel.app/api/posts",
+        `${process.env.URL_API}/posts`,
         fetcher,
         {
             revalidateIfStale: false,
@@ -32,7 +37,9 @@ function PostList() {
                 </Button>
             </div>
             <br />
-            <AppTable posts={data?.sort((a: any, b: any) => b.id - a.id)} />
+            <AppTable
+                posts={data.data?.sort((a: any, b: any) => b.id - a.id)}
+            />
         </Container>
     );
 }
