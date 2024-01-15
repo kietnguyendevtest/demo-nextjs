@@ -18,24 +18,19 @@ function AppAlert(props: AppAlertProps) {
     };
 
     const handleSave = () => {
-        fetch(
-            `https://nmkiet-api-fake-json-server.vercel.app/api/posts/${postId}`,
-            {
-                method: "DELETE",
-                headers: {
-                    Accept: "application/json, text/plain, */*",
-                    "Content-Type": "application/json",
-                },
-            }
-        )
+        fetch(`${process.env.URL_API}/posts/${postId}`, {
+            method: "DELETE",
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json",
+            },
+        })
             .then((res) => res.json())
             .then((res) => {
                 if (res) {
                     toast.success("Delete succeed");
                     setShowAlert(false);
-                    mutate(
-                        "https://nmkiet-api-fake-json-server.vercel.app/api/posts"
-                    );
+                    mutate(`${process.env.URL_API}/posts`);
                 } else {
                     toast.error("Delete Failed");
                 }

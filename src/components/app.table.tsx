@@ -73,15 +73,12 @@ function AppTable(props: AppTableProps) {
                         return (
                             <tr key={item.id}>
                                 <td>
-                                    <Button
-                                        variant="info"
-                                        size="sm"
-                                        className="mx-2"
+                                    <Link
+                                        href={`/posts/${item.id}`}
+                                        className="btn btn-info btn-sm mx-2"
                                     >
-                                        <Link href={`/posts/${item.id}`}>
-                                            View
-                                        </Link>
-                                    </Button>
+                                        View
+                                    </Link>
                                     <Button
                                         variant="warning"
                                         size="sm"

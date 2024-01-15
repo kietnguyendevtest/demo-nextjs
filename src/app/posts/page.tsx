@@ -1,5 +1,5 @@
 "use client";
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 import useSWR from "swr";
 import AppTable from "@/components/app.table";
@@ -10,7 +10,6 @@ import Link from "next/link";
 // }
 
 function PostList() {
-    //console.log(process.env.URL_API);
     const fetcher = (url: string) =>
         fetch(url, {
             method: "GET",
@@ -32,9 +31,9 @@ function PostList() {
         <Container>
             <div>
                 <h1>Post List</h1>
-                <Button variant="outline-secondary" size="sm">
-                    <Link href="/">&#8672; Go home page</Link>
-                </Button>
+                <Link href="/" className="btn btn-outline-secondary btn-sm">
+                    &#8672; Go home page
+                </Link>
             </div>
             <br />
             <AppTable

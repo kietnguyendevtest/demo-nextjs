@@ -47,31 +47,26 @@ function AppModal(props: AppModalProps) {
         }
 
         if (postItem && postItem.id) {
-            fetch(
-                `https://nmkiet-api-fake-json-server.vercel.app/api/posts/${postItem.id}`,
-                {
-                    method: "PUT",
-                    headers: {
-                        Accept: "application/json, text/plain, */*",
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ title, author, content }),
-                }
-            )
+            fetch(`${process.env.URL_API}/posts/${postItem.id}`, {
+                method: "PUT",
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ title, author, content }),
+            })
                 .then((res) => res.json())
                 .then((res) => {
                     if (res) {
                         toast.success("Edit succeed");
                         handleCloseModal();
-                        mutate(
-                            "https://nmkiet-api-fake-json-server.vercel.app/api/posts"
-                        );
+                        mutate(`${process.env.URL_API}/posts`);
                     } else {
                         toast.error("Edit Failed");
                     }
                 });
         } else {
-            fetch("https://nmkiet-api-fake-json-server.vercel.app/api/posts", {
+            fetch(`${process.env.URL_API}/posts`, {
                 method: "POST",
                 headers: {
                     Accept: "application/json, text/plain, */*",
@@ -84,9 +79,7 @@ function AppModal(props: AppModalProps) {
                     if (res) {
                         toast.success("Create succeed");
                         handleCloseModal();
-                        mutate(
-                            "https://nmkiet-api-fake-json-server.vercel.app/api/posts"
-                        );
+                        mutate(`${process.env.URL_API}/posts`);
                     } else {
                         toast.error("Create Failed");
                     }
